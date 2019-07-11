@@ -1,0 +1,5 @@
+*.elf
+*.o
+*-cache*
+*-bak
+*.bak
