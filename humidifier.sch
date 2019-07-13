@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:humidifier-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -267,7 +266,7 @@ U 1 1 5D257C01
 P 5600 2300
 F 0 "RV1" H 5530 2346 50  0000 R CNN
 F 1 "5K" H 5530 2255 50  0000 R CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" H 5600 2300 50  0001 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Bourns_3386P_Vertical" H 5600 2300 50  0001 C CNN
 F 3 "~" H 5600 2300 50  0001 C CNN
 	1    5600 2300
 	1    0    0    -1  
@@ -281,7 +280,7 @@ Text GLabel 5850 2300 2    50   Input ~ 0
 26
 NoConn ~ 5600 2150
 Wire Wire Line
-	3850 3150 4350 3150
+	3850 3150 4000 3150
 Wire Wire Line
 	4750 3450 4750 3350
 Wire Wire Line
@@ -327,4 +326,91 @@ $EndComp
 NoConn ~ 5600 2950
 Wire Wire Line
 	3850 2500 3850 2650
+Text GLabel 4000 3350 3    50   Input ~ 0
+water
+Wire Wire Line
+	4000 3150 4000 3350
+Connection ~ 4000 3150
+Wire Wire Line
+	4000 3150 4350 3150
+$Comp
+L Connector_Generic:Conn_02x01 J3
+U 1 1 5D2715F1
+P 6500 3850
+F 0 "J3" V 6504 3930 50  0000 L CNN
+F 1 "FAN" V 6595 3930 50  0000 L CNN
+F 2 "Connector_Wire:SolderWirePad_1x02_P7.62mm_Drill2mm" H 6500 3850 50  0001 C CNN
+F 3 "~" H 6500 3850 50  0001 C CNN
+	1    6500 3850
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:Q_NPN_ECB Q2
+U 1 1 5D27216B
+P 6400 4400
+F 0 "Q2" H 6590 4446 50  0000 L CNN
+F 1 "13001" H 6590 4355 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92" H 6600 4500 50  0001 C CNN
+F 3 "~" H 6400 4400 50  0001 C CNN
+	1    6400 4400
+	1    0    0    -1  
+$EndComp
+Text GLabel 5900 4400 0    50   Input ~ 0
+water
+$Comp
+L Device:R R1
+U 1 1 5D27333A
+P 6050 4400
+F 0 "R1" V 6257 4400 50  0000 C CNN
+F 1 "1k" V 6166 4400 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5980 4400 50  0001 C CNN
+F 3 "~" H 6050 4400 50  0001 C CNN
+	1    6050 4400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR0112
+U 1 1 5D273A91
+P 6500 4600
+F 0 "#PWR0112" H 6500 4350 50  0001 C CNN
+F 1 "GND" H 6505 4427 50  0000 C CNN
+F 2 "" H 6500 4600 50  0001 C CNN
+F 3 "" H 6500 4600 50  0001 C CNN
+	1    6500 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0113
+U 1 1 5D274071
+P 6500 3600
+F 0 "#PWR0113" H 6500 3450 50  0001 C CNN
+F 1 "VCC" H 6517 3773 50  0000 C CNN
+F 2 "" H 6500 3600 50  0001 C CNN
+F 3 "" H 6500 3600 50  0001 C CNN
+	1    6500 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L pspice:DIODE D1
+U 1 1 5D2746DC
+P 6900 3950
+F 0 "D1" V 6946 3822 50  0000 R CNN
+F 1 "4141" V 6855 3822 50  0000 R CNN
+F 2 "Diode_THT:D_DO-15_P3.81mm_Vertical_AnodeUp" H 6900 3950 50  0001 C CNN
+F 3 "~" H 6900 3950 50  0001 C CNN
+	1    6900 3950
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6500 3600 6500 3650
+Wire Wire Line
+	6500 3650 6900 3650
+Wire Wire Line
+	6900 3650 6900 3750
+Connection ~ 6500 3650
+Wire Wire Line
+	6900 4150 6500 4150
+Wire Wire Line
+	6500 4200 6500 4150
+Connection ~ 6500 4150
 $EndSCHEMATC
