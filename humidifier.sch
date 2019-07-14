@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:humidifier-cache
 EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
@@ -130,28 +131,6 @@ $EndComp
 Wire Wire Line
 	6800 2700 6800 2800
 $Comp
-L power:GND #PWR0104
-U 1 1 5D24E3EA
-P 4750 3450
-F 0 "#PWR0104" H 4750 3200 50  0001 C CNN
-F 1 "GND" H 4755 3277 50  0000 C CNN
-F 2 "" H 4750 3450 50  0001 C CNN
-F 3 "" H 4750 3450 50  0001 C CNN
-	1    4750 3450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R3
-U 1 1 5D24E7FA
-P 4500 3350
-F 0 "R3" V 4400 3350 50  0000 C CNN
-F 1 "1K" V 4300 3350 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 4430 3350 50  0001 C CNN
-F 3 "~" H 4500 3350 50  0001 C CNN
-	1    4500 3350
-	0    -1   -1   0   
-$EndComp
-$Comp
 L Connector_Generic:Conn_02x01 J1
 U 1 1 5D24F136
 P 3850 2850
@@ -280,15 +259,6 @@ Text GLabel 5850 2300 2    50   Input ~ 0
 26
 NoConn ~ 5600 2150
 Wire Wire Line
-	3850 3150 4000 3150
-Wire Wire Line
-	4750 3450 4750 3350
-Wire Wire Line
-	4750 3350 4650 3350
-Wire Wire Line
-	4350 3350 4350 3150
-Connection ~ 4350 3150
-Wire Wire Line
 	4350 3150 4600 3150
 $Comp
 L Connector_Generic:Conn_02x01 J2
@@ -326,13 +296,8 @@ $EndComp
 NoConn ~ 5600 2950
 Wire Wire Line
 	3850 2500 3850 2650
-Text GLabel 4000 3350 3    50   Input ~ 0
+Text GLabel 3850 3300 3    50   Input ~ 0
 water
-Wire Wire Line
-	4000 3150 4000 3350
-Connection ~ 4000 3150
-Wire Wire Line
-	4000 3150 4350 3150
 $Comp
 L Connector_Generic:Conn_02x01 J3
 U 1 1 5D2715F1
@@ -344,19 +309,6 @@ F 3 "~" H 6500 3850 50  0001 C CNN
 	1    6500 3850
 	0    1    1    0   
 $EndComp
-$Comp
-L Device:Q_NPN_ECB Q2
-U 1 1 5D27216B
-P 6400 4400
-F 0 "Q2" H 6590 4446 50  0000 L CNN
-F 1 "13001" H 6590 4355 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-92" H 6600 4500 50  0001 C CNN
-F 3 "~" H 6400 4400 50  0001 C CNN
-	1    6400 4400
-	1    0    0    -1  
-$EndComp
-Text GLabel 5900 4400 0    50   Input ~ 0
-water
 $Comp
 L Device:R R1
 U 1 1 5D27333A
@@ -413,4 +365,229 @@ Wire Wire Line
 Wire Wire Line
 	6500 4200 6500 4150
 Connection ~ 6500 4150
+$Comp
+L Transistor_BJT:MJE13003 Q2
+U 1 1 5D2A6785
+P 6400 4400
+F 0 "Q2" H 6592 4446 50  0000 L CNN
+F 1 "MJE13003" H 6592 4355 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-126-3_Vertical" H 6600 4325 50  0001 L CIN
+F 3 "http://www.onsemi.com/pub_link/Collateral/MJE13003-D.PDF" H 6400 4400 50  0001 L CNN
+	1    6400 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Amplifier_Operational:LM324 U2
+U 1 1 5D2A75B3
+P 4600 5400
+F 0 "U2" H 4600 5767 50  0000 C CNN
+F 1 "LM324" H 4600 5676 50  0000 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm_LongPads" H 4550 5500 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 4650 5600 50  0001 C CNN
+	1    4600 5400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3850 3150 3850 3300
+Text GLabel 4350 3300 3    50   Input ~ 0
+EN
+Wire Wire Line
+	4350 3150 4350 3300
+Text GLabel 5350 5400 2    50   Input ~ 0
+EN
+Wire Wire Line
+	4900 5400 5200 5400
+Text GLabel 5800 4400 0    50   Input ~ 0
+EN
+Wire Wire Line
+	5800 4400 5900 4400
+$Comp
+L Amplifier_Operational:LM324 U2
+U 5 1 5D2AB03C
+P 2550 5550
+F 0 "U2" H 2508 5596 50  0000 L CNN
+F 1 "LM324" H 2508 5505 50  0000 L CNN
+F 2 "Package_DIP:DIP-14_W7.62mm_LongPads" H 2500 5650 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 2600 5750 50  0001 C CNN
+	5    2550 5550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0104
+U 1 1 5D2AD182
+P 2450 5250
+F 0 "#PWR0104" H 2450 5100 50  0001 C CNN
+F 1 "VCC" H 2467 5423 50  0000 C CNN
+F 2 "" H 2450 5250 50  0001 C CNN
+F 3 "" H 2450 5250 50  0001 C CNN
+	1    2450 5250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0114
+U 1 1 5D2AD640
+P 2450 5850
+F 0 "#PWR0114" H 2450 5600 50  0001 C CNN
+F 1 "GND" H 2455 5677 50  0000 C CNN
+F 2 "" H 2450 5850 50  0001 C CNN
+F 3 "" H 2450 5850 50  0001 C CNN
+	1    2450 5850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 5D2ADB6A
+P 3900 5700
+F 0 "R3" V 4107 5700 50  0000 C CNN
+F 1 "47K" V 4016 5700 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 3830 5700 50  0001 C CNN
+F 3 "~" H 3900 5700 50  0001 C CNN
+	1    3900 5700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 5D2AE8F7
+P 3900 5000
+F 0 "R2" V 4107 5000 50  0000 C CNN
+F 1 "47k" V 4016 5000 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 3830 5000 50  0001 C CNN
+F 3 "~" H 3900 5000 50  0001 C CNN
+	1    3900 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR0115
+U 1 1 5D2AEFB3
+P 3900 4850
+F 0 "#PWR0115" H 3900 4700 50  0001 C CNN
+F 1 "VCC" H 3917 5023 50  0000 C CNN
+F 2 "" H 3900 4850 50  0001 C CNN
+F 3 "" H 3900 4850 50  0001 C CNN
+	1    3900 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0116
+U 1 1 5D2AF4C9
+P 3900 5850
+F 0 "#PWR0116" H 3900 5600 50  0001 C CNN
+F 1 "GND" H 3905 5677 50  0000 C CNN
+F 2 "" H 3900 5850 50  0001 C CNN
+F 3 "" H 3900 5850 50  0001 C CNN
+	1    3900 5850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4300 5500 3900 5500
+Wire Wire Line
+	3900 5500 3900 5550
+Wire Wire Line
+	3900 5500 3900 5150
+Connection ~ 3900 5500
+Text GLabel 3200 5300 0    50   Input ~ 0
+water
+Wire Wire Line
+	3200 5300 3550 5300
+$Comp
+L Device:R_POT RV2
+U 1 1 5D2B1E6C
+P 3300 5600
+F 0 "RV2" H 3231 5646 50  0000 R CNN
+F 1 "100K" H 3231 5555 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical" H 3300 5600 50  0001 C CNN
+F 3 "~" H 3300 5600 50  0001 C CNN
+	1    3300 5600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3450 5600 3550 5600
+Wire Wire Line
+	3550 5600 3550 5300
+Connection ~ 3550 5300
+Wire Wire Line
+	3550 5300 4300 5300
+$Comp
+L power:GND #PWR0117
+U 1 1 5D2B2CB2
+P 3300 5850
+F 0 "#PWR0117" H 3300 5600 50  0001 C CNN
+F 1 "GND" H 3305 5677 50  0000 C CNN
+F 2 "" H 3300 5850 50  0001 C CNN
+F 3 "" H 3300 5850 50  0001 C CNN
+	1    3300 5850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3300 5750 3300 5850
+$Comp
+L Connector_Generic:Conn_02x01 J4
+U 1 1 5D2BA9A7
+P 2050 5500
+F 0 "J4" V 2054 5580 50  0000 L CNN
+F 1 "PWR" V 2145 5580 50  0000 L CNN
+F 2 "Connector_Wire:SolderWirePad_1x02_P7.62mm_Drill2mm" H 2050 5500 50  0001 C CNN
+F 3 "~" H 2050 5500 50  0001 C CNN
+	1    2050 5500
+	0    1    1    0   
+$EndComp
+$Comp
+L power:VCC #PWR0118
+U 1 1 5D2BAF39
+P 2050 5300
+F 0 "#PWR0118" H 2050 5150 50  0001 C CNN
+F 1 "VCC" H 2067 5473 50  0000 C CNN
+F 2 "" H 2050 5300 50  0001 C CNN
+F 3 "" H 2050 5300 50  0001 C CNN
+	1    2050 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0119
+U 1 1 5D2BB1DB
+P 2050 5800
+F 0 "#PWR0119" H 2050 5550 50  0001 C CNN
+F 1 "GND" H 2055 5627 50  0000 C CNN
+F 2 "" H 2050 5800 50  0001 C CNN
+F 3 "" H 2050 5800 50  0001 C CNN
+	1    2050 5800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J6
+U 1 1 5D2BC582
+P 4150 3150
+F 0 "J6" H 4042 2925 50  0000 C CNN
+F 1 "en" H 4042 3016 50  0000 C CNN
+F 2 "Connector_Wire:SolderWirePad_1x01_Drill2mm" H 4150 3150 50  0001 C CNN
+F 3 "~" H 4150 3150 50  0001 C CNN
+	1    4150 3150
+	-1   0    0    1   
+$EndComp
+Connection ~ 4350 3150
+$Comp
+L Connector:Conn_01x01_Female J5
+U 1 1 5D2C5E36
+P 3550 5100
+F 0 "J5" V 3488 5012 50  0000 R CNN
+F 1 "water" V 3397 5012 50  0000 R CNN
+F 2 "Connector_Wire:SolderWirePad_1x01_Drill2mm" H 3550 5100 50  0001 C CNN
+F 3 "~" H 3550 5100 50  0001 C CNN
+	1    3550 5100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J7
+U 1 1 5D2C7AFF
+P 5200 5600
+F 0 "J7" V 5046 5648 50  0000 L CNN
+F 1 "en" V 5137 5648 50  0000 L CNN
+F 2 "Connector_Wire:SolderWirePad_1x01_Drill2mm" H 5200 5600 50  0001 C CNN
+F 3 "~" H 5200 5600 50  0001 C CNN
+	1    5200 5600
+	0    1    1    0   
+$EndComp
+Connection ~ 5200 5400
+Wire Wire Line
+	5200 5400 5350 5400
 $EndSCHEMATC
