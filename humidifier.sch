@@ -1,6 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:humidifier-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -15,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Timer:NE555 U1
+L humidifier-rescue:NE555-Timer U1
 U 1 1 5D2497E6
 P 2900 1750
 F 0 "U1" H 2800 1800 50  0000 C CNN
@@ -591,7 +590,7 @@ Connection ~ 4450 3450
 Wire Wire Line
 	4450 3450 4600 3450
 $Comp
-L Timer:NE555 U3
+L humidifier-rescue:NE555-Timer U3
 U 1 1 5D38AFBE
 P 3550 5650
 F 0 "U3" H 3450 5700 50  0000 C CNN
